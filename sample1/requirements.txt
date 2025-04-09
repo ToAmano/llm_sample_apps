@@ -1,0 +1,9 @@
+langchain
+langgraph
+langchain_core
+langchain-openai
+langchain_google_genai
+langchain_anthropic
+streamlit 
+openai
+dotenv
