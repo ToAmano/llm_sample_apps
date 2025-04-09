@@ -1,3 +1,7 @@
+"""
+もっともシンプルなGemini 2.0 Pro チャットアプリ
+"""
+
 import streamlit as st
 import os
 from dotenv import load_dotenv

@@ -3,6 +3,8 @@ import os
 import uuid
 from datetime import datetime
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from prompt import SYSTEM_PROMPT_CLAUDE
 
@@ -94,6 +96,18 @@ class GeminiChatApp:
             self.sessions[session_id].name = new_name
             return True
         return False
+    
+    def get_llm(model_type: str):
+        if model_type == "gpt-4o":
+            return ChatOpenAI(model="gpt-4o", temperature=0.7)
+        elif model_type == "gemini-2.0-pro":
+            return ChatGoogleGenerativeAI(model="gemini-2.0-pro", temperature=0.7)
+        elif model_type == "claude-3-7-sonnet":
+            return ChatAnthropic(model="claude-3-7-sonnet-20250211", temperature=0.7)
+        elif model_type == "gemini-2.0-flash":
+            return ChatGoogleGenerativeAI(model="gemini-2.0-flash", temperature=0.7)
+        else:
+            raise ValueError(f"不明なモデルタイプ: {model_type}")
     
     def get_current_session(self):
         """現在のセッションを取得する"""
